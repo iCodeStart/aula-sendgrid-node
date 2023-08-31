@@ -6,6 +6,7 @@ dotenv.config();
 
 sgMail.setApiKey(process.env.SENDGRID_KEY!);
 
+
 type SendGrid = {
   to: string;
   from: string;
@@ -38,5 +39,6 @@ app
     port: process.env.PORT ? Number(process.env.PORT) : 3333,
   })
   .then(() => {
+    console.log(process.env.SENDGRID_KEY)
     console.log("Servidor funcionando");
   });
