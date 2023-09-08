@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
+import cors from '@fastify/cors'
 
 dotenv.config();
 
@@ -15,6 +16,12 @@ type SendGrid = {
 };
 
 const app = fastify();
+
+app.register(cors, { 
+  origin: "*",
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+});
 
 app.post("/send-email", async (request, response) => {
   try {
